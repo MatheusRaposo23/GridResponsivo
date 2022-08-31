@@ -1,0 +1,168 @@
+body, h2, p{
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 400;
+  background-color: #ecf2f8;
+}
+
+h2
+{
+  font-weight: 600;
+}
+
+.flex {
+  display: flex;
+  gap: 1rem;
+} /* alinhou as divs de informações uma ao lado da outra, sem isto o nome e informação de graduacao ficaria embaixo da foto */
+
+.margintext > *:where(:not(:first-child)) {
+  margin-top: 1em;
+} /* aqui é dado margin top para cada elemento que não é o primeiro elemento do depoimento, 1em nesse caso varia de acordo com o tamanho do texto e citação*/
+
+.bgpurple {
+  background: #7541c8;
+}
+.bglightgrey {
+  background: #48556a;
+}
+.bggrey {
+  background: #19212e;
+}
+
+.bgwhite {
+  background: #fff;
+}
+
+.whitetext {
+  color: #fff;
+}
+.blacktext {
+  color: #48556a;
+}
+.purpleborder {
+  border: 2px solid #a775f1;
+}
+
+/* components */
+.container {
+  display: grid;
+  gap: 1.5rem;
+  grid-auto-columns: 1fr; /* defino como auto pois modelo minhas grades no mediaquery, caso seja menor que o ultimo media, o grid em=ncaixa um em cada linha e coluna assim como o pré definido abaixo */
+  grid-template-areas:
+   'one'
+   'two'
+   'three'
+   'four'
+   'five';
+
+
+  width: min(95%, 70rem); /* o browse escolhe o menor dos dois valores e aplica em tela, como se fosse width: 95% ou max-width 70rem */
+  margin-inline: auto; /* alinha o bloco todo ao centro????????*/
+}
+
+.depoimento {
+  font-size: 0.8125rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.depoimento:nth-child(1) {
+  grid-area: one;
+}
+.depoimento:nth-child(2) {
+  grid-area: two;
+}
+.depoimento:nth-child(3) {
+  grid-area: three;
+}
+.depoimento:nth-child(4) {
+  grid-area: four;
+}
+.depoimento:nth-child(5) {
+  grid-area: five;
+}
+
+@media screen and (min-width: 33em) {
+  .container {
+      grid-template-areas:
+      "one one"
+      "two three"
+      "five five"
+      "four four";
+  }
+} /* terceira quebra de grid */
+
+@media screen and (min-width: 38em) {
+  .container {
+    grid-template-areas:
+     'one one'
+     'two five'
+     'three five'
+     'four four';
+  }
+} /* segunda quebra de grid*/
+
+@media screen and (min-width: 54em) {
+  .container {
+      grid-template-areas:
+      "one one two"
+      "five five five"
+      "three four four";
+  }
+} /* primeira quebra de grid */
+
+@media screen and (min-width: 75em) {
+  .container {
+      grid-template-areas:
+      "one one two five"
+      "three four four five";
+  }
+} /* grid a ser utilizado em tela inteira */
+
+
+.depoimento.quote {
+  background-image: url("./images/bg-pattern-quotation.svg");
+  background-repeat: no-repeat;
+  background-position: top right 10%; /* alinha ao topo e 10% da margem a direita */
+}
+
+.depoimento img {
+  width: 1.75rem;
+  border-radius: 50%;
+}
+
+.depoimento .name {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.depoimento .position {
+  font-size:  0.6875rem;
+  opacity: 0.5;
+}
+
+.depoimento > p:first-of-type {
+  font-size: 1.25rem;
+  line-height: 1.2;
+} /* adiciona este estilo no primeiro P dentro de depoimento */
+
+.depoimento > p:last-of-type {
+  opacity: 0.7;
+} /* adiciona este estilo no ultimo P dentro de depoimento */
